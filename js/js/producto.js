@@ -1,16 +1,82 @@
 
+class Productos{
+    constructor( nombre, precio, stock){
+    this.nombre = nombre;
+    this.precio = precio;
+    this.stock = stock;
+    }
+
+    get_datos(){
+        console.log("<-- PRODUCTO -->");
+        console.log("Nombre : ",this.nombre);
+        console.log("Precio: ", this.precio);
+        console.log("Stock: ", this.stock);
+    }
+
+    get_stock(){
+        if( this.stock <= 0){
+            return false
+        }
+        else{
+            return true
+        }
+    }
+    update_stock( unidades ){
+        if(this.stock >= unidades){
+            this.stock = this.stock - unidades;
+            return true
+        }
+        else{
+            console.log("No hay tanto stock");
+            console.log("Stock disponible: ", this.stock);
+            return false
+        }
+    }
+
+}
+
+let listaProductos = [];
+
+listaProductos.push( new Productos("Vaso" , 1000, 3));
+listaProductos.push( new Productos("Cuchillo" , 500, 5));
+listaProductos.push( new Productos("Tenedor" , 500,7));
+
+
+
+
+
+
+
+console.log("Lista de productos");
+
+for( let producto of listaProductos ){
+
+        producto.get_datos();
+
+}
+
+function buscarProducto( producto ){
+    return producto.nombre == compraUsuario
+}
+
+let comprausuario = prompt("Ingrese el nombre del producto que quiere comprar");
+let resultado_find = listaProductos.find( buscarProducto);
+
+
+
+
 function buscarProducto( producto ){
 
-    return producto.nombre == compraUsuario 
+    return producto.nombre == comprausuario 
 
 }
 
 let compraUsuario = "";
 
 while( compraUsuario != "FIN"){
-    compraUsuario = prompt("Solicite el producto a comprar")
+       compraUsario = prompt("Ingrese el nombre del producto a comprar")
 
-    if( compraUsuario !="FIN"){
+    if( comprausuario !="FIN"){
         let resultado_find = listaProductos.find(buscarProducto);
 
         if( resultado_find != undefined ){
